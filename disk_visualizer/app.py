@@ -1,6 +1,6 @@
 import argparse
-from .core.disk_info import DiskInfo
-from .core.disk_visualizer import DiskVisualizer
+from core import DiskInfo, DiskVisualizer
+
 
 class DiskUsageApp:
     """Основной класс приложения для работы с аргументами и запуском программы."""
