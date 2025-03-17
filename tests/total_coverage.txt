@@ -1,12 +1,12 @@
 Name                                      Stmts   Miss  Cover
 -------------------------------------------------------------
-disk_visualizer\__init__.py                   0      0   100%
-disk_visualizer\app.py                       19      2    89%
-disk_visualizer\core\__init__.py              0      0   100%
-disk_visualizer\core\disk_info.py            18      6    67%
-disk_visualizer\core\disk_visualizer.py      12      0   100%
-tests\test_app.py                            15      3    80%
-tests\test_disk_info.py                      15      1    93%
-tests\test_disk_visualizer.py                15      3    80%
+disk_visualizer/__init__.py                   0      0   100%
+disk_visualizer/app.py                       19      2    89%
+disk_visualizer/core/__init__.py              0      0   100%
+disk_visualizer/core/disk_info.py            17      3    82%
+disk_visualizer/core/disk_visualizer.py      12      0   100%
+tests/test_app.py                            15      3    80%
+tests/test_disk_info.py                      15      1    93%
+tests/test_disk_visualizer.py                15      3    80%
 -------------------------------------------------------------
-TOTAL                                        94     15    84%
+TOTAL                                        93     12    87%
