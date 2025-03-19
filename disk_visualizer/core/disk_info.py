@@ -1,5 +1,5 @@
 import os
-import subprocess
+import psutil
 
 class DiskInfo:
     """Получает информацию о дисковом пространстве."""
@@ -13,15 +13,13 @@ class DiskInfo:
         if not os.path.exists(self.path):
             raise FileNotFoundError(f"Ошибка: путь {self.path} не существует.")
 
-        if os.name == "nt":  # Windows
-            raise NotImplementedError("Эта функция не поддерживается на Windows.")
-        else:  # Linux/macOS
-            try:
-                result = subprocess.run(["df", self.path], capture_output=True, text=True, check=True)
-                data = result.stdout.split("\n")[1].split()
-                total, used, free = int(data[1]) * 1024, int(data[2]) * 1024, int(data[3]) * 1024
-            except Exception as e:
-                raise RuntimeError(f"Ошибка получения данных: {e}")
+        try:
+            """Получаем информацию о диске"""
+            usage = psutil.disk_usage(self.path)
+            total = usage.total
+            used = usage.used
+            free = usage.free
+        except Exception as e:
+            raise RuntimeError(f"Ошибка получения данных: {e}")
 
         return total, used, free
-

@@ -1,5 +1,5 @@
 import argparse
-from core import DiskInfo, DiskVisualizer
+from disk_visualizer.core import DiskInfo, DiskVisualizer
 
 
 class DiskUsageApp:
