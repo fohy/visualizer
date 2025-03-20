@@ -1,5 +1,4 @@
-import os
-import psutil
+import subprocess
 
 class DiskInfo:
     """Получает информацию о дисковом пространстве."""
@@ -10,15 +9,10 @@ class DiskInfo:
 
     def get_usage(self):
         """Возвращает общий, использованный и свободный объем диска в байтах."""
-        if not os.path.exists(self.path):
-            raise FileNotFoundError(f"Ошибка: путь {self.path} не существует.")
-
         try:
-            """Получаем информацию о диске"""
-            usage = psutil.disk_usage(self.path)
-            total = usage.total
-            used = usage.used
-            free = usage.free
+            result = subprocess.run(["df", self.path], capture_output=True, text=True, check=True)
+            data = result.stdout.split("\n")[1].split()
+            total, used, free = int(data[1]) * 1024, int(data[2]) * 1024, int(data[3]) * 1024
         except Exception as e:
             raise RuntimeError(f"Ошибка получения данных: {e}")
 
